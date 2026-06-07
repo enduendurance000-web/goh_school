@@ -1,7 +1,7 @@
 FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
-    libzip-dev libpng-dev libonig-dev libxml2-dev libcurl4-openssl-dev \
+    libzip-dev libpng-dev libonig-dev libxml2-dev libcurl4-openssl-dev libicu-dev \
     zip unzip curl git \
     && docker-php-ext-install pdo pdo_mysql mbstring xml curl fileinfo gd zip intl bcmath ctype opcache
 
