@@ -14,8 +14,9 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN composer install --no-dev --optimize-autoloader
 
-RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
+RUN php artisan route:cache && php artisan view:cache
 
 EXPOSE 8080
 
-CMD php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
+CMD php artisan config:cache && php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
+
