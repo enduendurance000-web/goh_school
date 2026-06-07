@@ -1,4 +1,4 @@
-FROM php:8.2-cli
+FROM php:8.1-cli
 
 RUN apt-get update && apt-get install -y \
     libzip-dev libpng-dev libonig-dev libxml2-dev libcurl4-openssl-dev libicu-dev \
@@ -9,6 +9,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 COPY . .
+
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN composer install --no-dev --optimize-autoloader
 
